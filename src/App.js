@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import MeteoDisplay from './components/MeteoDisplay';
+import UpdateMeteo from './components/UpdateMeteo';
 import './App.css';
 
 function App() {
+  const [appState, setAppState] = useState({
+    temperature: null,
+    spotifyId: null,
+    deezerId: null
+  })
+
   return (
     <div className="App">
-      Bienvenue sur mon application React utilisant Firebase. Maintenant, il ne
-      reste plus qu&apos;à coder !
+      <MeteoDisplay appState={appState} setAppState={setAppState} />
+      <UpdateMeteo appState={appState} setAppState={setAppState} />
     </div>
   );
 }
