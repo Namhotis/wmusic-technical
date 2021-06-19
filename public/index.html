@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/0.5.12/MinFaker.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyBvzDc1y3GN2vgDtZlCxO55jkHGxO4sdfw",
+      authDomain: "wmusic-technical.firebaseapp.com",
+      projectId: "wmusic-technical",
+      storageBucket: "wmusic-technical.appspot.com",
+      messagingSenderId: "1074501743202",
+      appId: "1:1074501743202:web:c7802dad7673f4206e573b",
+      measurementId: "G-FJE8NQCK8R"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+
+  <h1>Testing Firebase</h1>
+
+  <section id="whenSignedOut">
+    <button id="signInBtn" class="btn btn-primary blue">Sign in with Google</button>
+  </section>
+
+  <section id="whenSignedIn" hidden="true">
+    <div id="userDetails"></div>
+
+    <ul id="thingsList">
+
+    </ul>
+
+    <button id="createThing" class="btn blue">Create Random Thing</button>
+
+    <button id="signOutBtn" class="btn btn-primary red">Sign Out</button>
+  </section>
+</body>
+</html>
