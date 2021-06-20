@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-
 import './index.scss'
 import { infos } from '../../data'
 
