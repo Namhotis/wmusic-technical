@@ -3,7 +3,9 @@ import spotifyIcon from '../../icons/spotifyIcon.png'
 import deezerIcon from "../../icons/deezerIcon.png";
 import './index.scss'
 
-const redirect_uri = "http://localhost:3000/callback";
+const redirect_uri = process.env.storageBucket
+  ? "http://localhost:3000/callback"
+  : `${process.env.storageBucket}/callback`;
 const client_id = process.env.REACT_APP_SPOTIFY_ID;
 
 const authEndpoint = "https://accounts.spotify.com/authorize";
