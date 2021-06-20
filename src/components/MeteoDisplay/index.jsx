@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+
 import './index.scss'
 import { infos } from '../../data'
 
@@ -12,7 +13,7 @@ const MeteoDisplay = ({ appState, setAppState }) => {
         setAppState({
           ...appState,
           temperature: res.main.temp,
-          weather: res
+          weather: res,
         });
       })
       .catch((err) => console.log(err));
