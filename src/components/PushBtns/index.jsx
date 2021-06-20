@@ -16,22 +16,22 @@ const PushBtns = ({ appState }) => {
     )}&response_type=token&show_dialog=true&state=${appState.temps}`;
   }
 
-  const addPlaylistToSpotifyLib = () => {
-    fetch(
-      `https://accounts.spotify.com/authorize?response_type=token&redirect_uri=https%3A%2F%2Fdeveloper.spotify.com/&client_id=774b29d4f13844c495f206cafdad9c86&scope=playlist-modify-public+playlist-modify-private&state=l5ue09&state=43`,
-      {
-        method: "PUT",
-        headers: new Headers({
-          Authorization: `Basic ${process.env.REACT_APP_SPOTIFY_ID}`,
-          "Content-Type": "application/x-www-form-urlencoded",
-        }),
-        body: "public=false",
-      }
-    )
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  }
+  // const addPlaylistToSpotifyLib = () => {
+  //   fetch(
+  //     `https://accounts.spotify.com/authorize?response_type=token&redirect_uri=https%3A%2F%2Fdeveloper.spotify.com/&client_id=774b29d4f13844c495f206cafdad9c86&scope=playlist-modify-public+playlist-modify-private&state=l5ue09&state=43`,
+  //     {
+  //       method: "PUT",
+  //       headers: new Headers({
+  //         Authorization: `Basic ${process.env.REACT_APP_SPOTIFY_ID}`,
+  //         "Content-Type": "application/x-www-form-urlencoded",
+  //       }),
+  //       body: "public=false",
+  //     }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  // }
 
   return (
     <section onClick={authorizeUser} className="pushBtns">

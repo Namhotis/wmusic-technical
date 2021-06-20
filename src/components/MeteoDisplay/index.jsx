@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import * as firebase from "firebase/app"
 import './index.scss'
 import { infos } from '../../data'
 
