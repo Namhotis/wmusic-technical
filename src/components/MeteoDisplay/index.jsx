@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
+import * as firebase from "firebase/app"
 import './index.scss'
 import { infos } from '../../data'
 
 const MeteoDisplay = ({ appState, setAppState }) => {
   const getMeteoAPI = () => {
-    console.log(process.env);
+    console.log(process.env, firebase);
     return fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     )
@@ -44,21 +45,25 @@ const MeteoDisplay = ({ appState, setAppState }) => {
   useEffect(() => getMeteoAPI(), [])
   useEffect(() => {
     appState.weather && checkRain()
+    console.log(appState.weather)
     handleCurrentTime();
   }, [appState.weather]);
 
   return (
     <section className="meteoDisplay">
-      <p>Température à Paris : {appState.temperature} degrés</p>
+      <p>
+        {appState.temperature}
+        <span>°C</span>
+      </p>
       {infos && appState?.temps && (
-        <>
-          <p>{infos[appState?.temps].text}</p>
+        <div className="meteoIconAndText">
+          <p>{infos[appState?.temps].textFr}</p>
           <img
             src={infos[appState?.temps].icon}
             className="weatherIcon"
             alt=""
           />
-        </>
+        </div>
       )}
     </section>
   );

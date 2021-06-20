@@ -1,3 +1,36 @@
 .weatherIcon {
-  width: 100px;
+  width: 200px;
+}
+
+.meteoDisplay {
+  max-width: 1024px;
+  width: 50%;
+  height: auto;
+  margin: 30px auto;
+  margin-right: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  > p {
+    display: inline-block;
+    font-size: 96px;
+    margin: 0;
+
+    span {
+      font-size: 32px;
+    }
+  }
+
+  .meteoIconAndText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
 }

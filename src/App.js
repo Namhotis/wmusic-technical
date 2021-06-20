@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import MeteoDisplay from './components/MeteoDisplay';
 import UpdateMeteo from './components/UpdateMeteo';
-import './App.css';
+import Header from './components/Header'
+import PushBtns from './components/PushBtns';
+import './App.scss';
 
 function App() {
   const [appState, setAppState] = useState({
@@ -12,8 +14,15 @@ function App() {
 
   return (
     <div className="App">
-      <MeteoDisplay appState={appState} setAppState={setAppState} />
-      <UpdateMeteo appState={appState} setAppState={setAppState} />
+      <Header />
+      <div className="flex row">
+        <MeteoDisplay appState={appState} setAppState={setAppState} />
+        <div className="flex column rightPart">
+          <UpdateMeteo appState={appState} setAppState={setAppState} />
+          <PushBtns />
+        </div>
+      </div>
+      {/* PUSH THE PLAYLIST */}
     </div>
   );
 }

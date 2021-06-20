@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './index.scss'
 import { infos } from '../../data'
 
 const UpdateMeteo = ({ appState, setAppState }) => {
@@ -8,19 +9,22 @@ const UpdateMeteo = ({ appState, setAppState }) => {
     setAppState({
       ...appState,
       temperature: infos[e.target.value].temperature,
-      temps: infos[e.target.value].title,
+      temps: infos[e.target.value].slug,
       rain: infos[e.target.value].rain
     });
   }
 
   return (
-    <section>
+    <section className="updateMeteo">
+      <h2>Et si vous aviez le pouvoir de changer la météo ?</h2>
       <select onChange={onChange}>
-        {handledInfos.map(([title]) => (
-          <option value={title} key={title}>
-            {title}
-          </option>
-        ))}
+        {handledInfos.map(([slug, {title}]) => {
+          return (
+            <option value={slug} key={slug}>
+              {title}
+            </option>
+          );
+        })}
       </select>
     </section>
   );
