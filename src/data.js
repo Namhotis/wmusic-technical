@@ -9,7 +9,9 @@ export const infos = {
     text: "Il fait beau aujourd'hui !",
     icon: sunIcon,
     temperature: 34.8,
-    rain: 0
+    rain: 0,
+    spotify:
+      "7ijDwIGYwRMJ1BewVy0t6i?si=32f6c8b51c904073",
   },
   rain: {
     slug: "rain",
@@ -17,7 +19,9 @@ export const infos = {
     text: "Attention ! Prenez un parapluie ;)",
     icon: rainIcon,
     temperature: 13.4,
-    rain: 1
+    rain: 1,
+    spotify:
+      "7oBDof2NS65O6RziUBgeRC?si=6d35477f67e14a26",
   },
   cold: {
     slug: "cold",
@@ -25,6 +29,8 @@ export const infos = {
     text: "Brrrrrr, il fait froid...",
     icon: coldIcon,
     temperature: 6.2,
-    rain: 0
+    rain: 0,
+    spotify:
+      "0no6AhEKdlfBy2TdFz4s9p?si=c0a3e5f576a242b2",
   },
 };

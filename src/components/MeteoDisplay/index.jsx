@@ -5,7 +5,6 @@ import { infos } from '../../data'
 
 const MeteoDisplay = ({ appState, setAppState }) => {
   const getMeteoAPI = () => {
-    console.log(process.env, firebase);
     return fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     )
@@ -52,7 +51,7 @@ const MeteoDisplay = ({ appState, setAppState }) => {
   return (
     <section className="meteoDisplay">
       <p>
-        {appState.temperature}
+        {appState.temperature?.toFixed(1)}
         <span>°C</span>
       </p>
       {infos && appState?.temps && (
