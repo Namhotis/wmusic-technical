@@ -4,6 +4,7 @@ import { infos } from '../../data'
 
 const MeteoDisplay = ({ appState, setAppState }) => {
   const getMeteoAPI = () => {
+    console.log(process.env);
     return fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     )
