@@ -20,13 +20,13 @@ const PushBtns = ({ appState }) => {
         )}&response_type=token&show_dialog=true&state=${appState.temps}`}
         className="pushBtn spotifyPushBtn"
       >
-        Découvrir votre playlist sur Spotify <img src={spotifyIcon} alt="" />
+        Liker la playlist sur Spotify <img src={spotifyIcon} alt="" />
       </a>
       <a
         href={`${DeezerAuthEndpoint}app_id=${process.env.REACT_APP_DEEZER_ID}&redirect_uri=${redirect_uri}&perms=basic_access,email,manage_library&state=${appState.temps}`}
         className="pushBtn deezerPushBtn"
       >
-        Découvrir votre playlist sur Deezer
+        Liker la playlist sur Deezer
         <img src={deezerIcon} alt="" />
       </a>
     </section>
