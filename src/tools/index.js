@@ -42,9 +42,6 @@ export const likePlaylistOnSpotify = (playlistId, userToken) => {
       "Content-Length": "0",
     }),
   })
-    .then((res) => res.json())
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
 };
 
 
@@ -62,7 +59,4 @@ export const likePlaylistOnDeezer = (playlistId, userToken, userId) => {
       }),
     }
   )
-    .then((res) => res.json())
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
 };
