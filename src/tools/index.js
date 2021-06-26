@@ -34,7 +34,6 @@ export const getHash = () => {
 }
 
 export const likePlaylistOnSpotify = (playlistId, userToken) => {
-  console.log("PlaylistId", playlistId, "UserToken", userToken);
   fetch(`https://api.spotify.com/v1/playlists/${playlistId}/followers`, {
     method: "PUT",
     headers: new Headers({
@@ -50,7 +49,6 @@ export const likePlaylistOnSpotify = (playlistId, userToken) => {
 
 
 export const likePlaylistOnDeezer = (playlistId, userToken, userId) => {
-  console.log("PlaylistId", playlistId, "UserToken", userToken);
   fetch(
     `https://cors-anywhere.herokuapp.com/https://api.deezer.com/user/${userId}/playlists?access_token=${userToken}`,
     {

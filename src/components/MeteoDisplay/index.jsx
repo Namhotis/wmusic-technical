@@ -43,7 +43,6 @@ const MeteoDisplay = ({ appState, setAppState }) => {
   useEffect(() => getMeteoAPI(), [])
   useEffect(() => {
     appState.weather && checkRain()
-    console.log(appState.weather)
     handleCurrentTime();
   }, [appState.weather]);
 

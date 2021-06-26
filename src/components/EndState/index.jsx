@@ -43,7 +43,6 @@ const EndState = ({ appState, setAppState }) => {
     getUserInfosServiceSpotify(_SpotifyToken)
       .then((res) => res.json())
       .then((res) => {
-        console.log(res)
         setUser(res);
         setAppState({
           ...appState,
@@ -54,7 +53,6 @@ const EndState = ({ appState, setAppState }) => {
   };
 
   const getUserInfosOnDeezer = (_DeezerToken) => {
-    console.log("getUserInfosOnDeezer");
     getUserInfosServiceDeezer(_DeezerToken)
       .then((res) => res.json())
       .then((res) => {
@@ -68,7 +66,7 @@ const EndState = ({ appState, setAppState }) => {
 
             likePlaylistOnDeezer(infos[appState.temps].spotify, res.access_token, _res.id)
               .then((_res) => _res.json())
-              .then((_res) => console.log("DAB", _res))
+              .then((_res) => console.log(_res))
               .catch((_err) => console.log(_err));
           })
           .catch((_err) => console.log(_err));
@@ -77,13 +75,11 @@ const EndState = ({ appState, setAppState }) => {
   };
 
   useEffect(() => {
-    console.log("hash2", getHash())
       hash === null && setHash(getHash());
       hash !== null && requestSpotifyAuth();
   }, [hash])
 
   useEffect(() => {
-    console.log("USER", user)
     user !== null && setAppState({ ...appState, user });
   }, [user]);
 
