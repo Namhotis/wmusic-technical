@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && REACT_APP_WEATHER_API_KEY=${{ secrets.REACT_APP_WEATHER_API_KEY }} npm run build
+      - run: npm ci && REACT_APP_WEATHER_API_KEY=${{ secrets.REACT_APP_WEATHER_API_KEY }} REACT_APP_DEEZER_ID=${{ secrets.REACT_APP_DEEZER_ID }} REACT_APP_DEEZER_SECRET=${{ secrets.REACT_APP_DEEZER_SECRET }} REACT_APP_ROOT_URL=${{ secrets.REACT_APP_ROOT_URL }} REACT_APP_SPOTIFY_ID=${{ secrets.REACT_APP_SPOTIFY_ID }} npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
