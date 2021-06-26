@@ -13,6 +13,10 @@ function App() {
     user: null
   })
 
+  React.useEffect(() => {
+    document.title = "Warner Music France, test technique"
+  })
+
   return (
     <div className="App">
       <Header />
