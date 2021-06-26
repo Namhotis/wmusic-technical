@@ -16,9 +16,10 @@ const UpdateMeteo = ({ appState, setAppState }) => {
 
   return (
     <section className="updateMeteo">
+      { infos[appState.temps]?.text && <p className="text">{infos[appState.temps].text}</p>}
       <h2>Et si vous aviez le pouvoir de changer la météo ?</h2>
       <select onChange={onChange}>
-        {handledInfos.map(([slug, {title}]) => {
+        {handledInfos.map(([slug, { title }]) => {
           return (
             <option value={slug} key={slug}>
               {title}
