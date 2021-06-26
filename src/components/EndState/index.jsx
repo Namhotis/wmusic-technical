@@ -5,7 +5,7 @@ import {
   getUserInfosServiceDeezer,
   getHash,
   likePlaylistOnSpotify,
-  likePlaylistOnDeezer,
+  // likePlaylistOnDeezer,
 } from "../../tools/index.js";
 import SpotifyIFrame from "../SpotifyIFrame/index.jsx";
 import DeezerIFrame from '../DeezerIFrame'
@@ -65,7 +65,6 @@ const EndState = ({ appState, setAppState }) => {
         //   .catch((_err) => console.log(_err));
 
         fetch(`https://api.deezer.com/user/me`, {
-          mode: "no-cors",
           headers: new Headers({
             Authorization: `Token ${res.access_token}`,
           }),
