@@ -1,9 +1,14 @@
 header {
-  text-align: center;
+  text-align: left;
   width: 100%;
   max-width: 1024px;
   margin: 50px auto;
-  font-family: "Lato";
+  font-family: "Avenir";
+
+  span {
+    font-family: "Mermaid";
+    font-size: 48px;
+  }
 
   p {
     font-size: 24px;

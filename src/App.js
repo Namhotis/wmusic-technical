@@ -5,12 +5,11 @@ import Header from './components/Header'
 import PushBtns from './components/PushBtns';
 import EndState from './components/EndState'
 import './App.scss';
+import './vars.scss';
 
 function App() {
   const [appState, setAppState] = useState({
     temperature: null,
-    spotifyId: null,
-    deezerId: null,
     user: null
   })
 

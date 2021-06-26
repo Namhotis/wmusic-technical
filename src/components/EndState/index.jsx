@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { infos } from '../../data.js'
+import {
+  getUserInfosServiceSpotify,
+  getUserInfosServiceDeezer,
+  getHash,
+  likePlaylistOnSpotify,
+  likePlaylistOnDeezer,
+} from "../../tools/index.js";
+import SpotifyIFrame from "../SpotifyIFrame/index.jsx";
+import DeezerIFrame from '../DeezerIFrame'
 import './index.scss';
 
 const EndState = ({ appState, setAppState }) => {
@@ -8,10 +17,14 @@ const EndState = ({ appState, setAppState }) => {
 
   const requestSpotifyAuth = () => {
     let _SpotifyToken = hash.access_token;
-    
-    console.log(infos, hash.state)
+    let _DeezerToken = hash.code;
 
     if (hash.state) {
+      setAppState({
+        ...appState,
+        temps: infos[hash.state].slug,
+      });
+    } else if (hash.code) {
       setAppState({
         ...appState,
         temps: infos[hash.state].slug,
@@ -19,70 +32,89 @@ const EndState = ({ appState, setAppState }) => {
     }
 
     if (_SpotifyToken) {
-      getUserInfos(_SpotifyToken)
+      getUserInfosOnSpotify(_SpotifyToken)
+      likePlaylistOnSpotify(infos[appState.temps].spotify, _SpotifyToken);
+    } else if (_DeezerToken) {
+      getUserInfosOnDeezer(_DeezerToken);
     }
   };
 
-  const getUserInfos = (_SpotifyToken) => {
-    fetch(`https://api.spotify.com/v1/me`, {
-      headers: new Headers({
-        Authorization: `Bearer ${_SpotifyToken}`,
-        "Content-Type": "application/x-www-form-urlencoded",
-      }),
-    })
-    .then((res) => res.json())
-    .then((res) => setUser(res))
-    .catch((err) => console.log(err))
+  const getUserInfosOnSpotify = (_SpotifyToken) => {
+    getUserInfosServiceSpotify(_SpotifyToken)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res)
+        setUser(res);
+        setAppState({
+          ...appState,
+          user
+        })
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const getUserInfosOnDeezer = (_DeezerToken) => {
+    console.log("getUserInfosOnDeezer");
+    getUserInfosServiceDeezer(_DeezerToken)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log("REEEES", res)
+        // likePlaylistOnDeezer(infos[appState.temps].spotify, res.access_token)
+        //   .then((_res) => _res.json())
+        //   .then((_res) => console.log(_res))
+        //   .catch((_err) => console.log(_err));
+
+        fetch(`https://api.deezer.com/user/me`, {
+          mode: "no-cors",
+          headers: new Headers({
+            Authorization: `Token ${res.access_token}`,
+          }),
+        })
+          .then((res) => res.json())
+          .then((res) => console.log("EEEEEEE", res))
+          .catch((err) => console.log(err));
+
+        // .then((res) => res.json())
+        // .then((res) => {
+        // .catch((err) => console.log(err));
+
+        // setUser(res);
+        // setAppState({
+        //   ...appState,
+        //   user,
+        // });
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    const hash = window.location.hash
-        .substring(1)
-        .split("&")
-        .reduce(function (initial, item) {
-          if (item) {
-            var parts = item.split("=");
-            initial[parts[0]] = decodeURIComponent(parts[1]);
-          }
-          return initial;
-    }, {});
-
-    setHash(hash)
-  }, []);
-
-  useEffect(() => {
+    console.log("hash2", getHash())
+      hash === null && setHash(getHash());
       hash !== null && requestSpotifyAuth();
   }, [hash])
 
   useEffect(() => {
-    console.log("user", user);
-    if (user !== null) {
-      setAppState({ ...appState, user })
-    }
+    console.log("USER", user)
+    user !== null && setAppState({ ...appState, user });
   }, [user]);
 
-  return (
-    <section className="endState">
-      {user !== null && (
-        <>
-          <h2>
-            Merci {user.display_name}, la playlist a été ajoutée à votre
-            bibliothèque.
-          </h2>
-          <iframe
-            src={`https://open.spotify.com/embed/playlist/${
-              infos[appState.temps].spotify
-            }`}
-            width="100%"
-            height="380"
-            frameBorder="0"
-            allowtransparency="true"
-            allow="encrypted-media"
-          ></iframe>
-        </>
-      )}
-    </section>
-  );
+  if (user !== null) {
+    return (
+      <section className="endState">
+        <p>Merci {user.display_name}, la playlist a été ajoutée à votre bibliothèque.</p>
+        {
+          infos[appState?.temps]?.spotify && (
+            <SpotifyIFrame playlistId={infos[appState.temps].spotify} />
+          )
+        }
+        {
+          infos[appState?.temps]?.deezer && (
+            <DeezerIFrame playlistId={infos[appState.temps].deezer} />
+          )
+        }
+      </section>
+    );
+  } else return null
 }
 
 export default EndState

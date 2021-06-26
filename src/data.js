@@ -11,7 +11,7 @@ export const infos = {
     temperature: 34.8,
     rain: 0,
     spotify:
-      "7ijDwIGYwRMJ1BewVy0t6i?si=32f6c8b51c904073",
+      "7ijDwIGYwRMJ1BewVy0t6i",
   },
   rain: {
     slug: "rain",
@@ -21,7 +21,7 @@ export const infos = {
     temperature: 13.4,
     rain: 1,
     spotify:
-      "7oBDof2NS65O6RziUBgeRC?si=6d35477f67e14a26",
+      "7oBDof2NS65O6RziUBgeRC",
   },
   cold: {
     slug: "cold",
@@ -31,6 +31,6 @@ export const infos = {
     temperature: 6.2,
     rain: 0,
     spotify:
-      "0no6AhEKdlfBy2TdFz4s9p?si=c0a3e5f576a242b2",
+      "0no6AhEKdlfBy2TdFz4s9p",
   },
 };

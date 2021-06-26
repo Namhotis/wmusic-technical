@@ -4,9 +4,12 @@ import './index.scss'
 const Header = () => {
   return (
     <header>
-      <p>Bienvenue, découvrez la playlist adaptée à la température actuelle !</p>
+      <p>
+        <span>Bienvenue</span>,<br />
+        découvrez la playlist adaptée à la température actuelle !
+      </p>
     </header>
-  )
+  );
 }
 
 export default Header

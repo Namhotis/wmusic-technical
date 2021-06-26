@@ -1,4 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto:wght@400;700&display=swap');
+@import './vars.scss';
+
+@font-face {
+  font-family: 'Mermaid';
+  src: local('Mermaid'), url(./assets/fonts/Mermaid1001.ttf) format('ttf');
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: local('Avenir'), url(./assets/fonts/Metropolis-Regular.otf) format('otf');
+}
 
 .App {
   text-align: center;
@@ -8,9 +18,10 @@
   justify-content: flex-start;
   width: 100%;
   height: auto;
-  font-family: "Roboto";
+  font-family: "Avenir";
   min-height: 100vh;
-  background-color: #f6f6f6;
+  background-color: $second1;
+  color: $second2;
 }
 
 .rightPart {
