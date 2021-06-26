@@ -10,8 +10,8 @@ export const infos = {
     icon: sunIcon,
     temperature: 34.8,
     rain: 0,
-    spotify:
-      "7ijDwIGYwRMJ1BewVy0t6i",
+    spotify: "7ijDwIGYwRMJ1BewVy0t6i",
+    deezer: "3241145486",
   },
   rain: {
     slug: "rain",
@@ -20,8 +20,8 @@ export const infos = {
     icon: rainIcon,
     temperature: 13.4,
     rain: 1,
-    spotify:
-      "7oBDof2NS65O6RziUBgeRC",
+    spotify: "7oBDof2NS65O6RziUBgeRC",
+    deezer: "2789833548",
   },
   cold: {
     slug: "cold",
@@ -30,7 +30,7 @@ export const infos = {
     icon: coldIcon,
     temperature: 6.2,
     rain: 0,
-    spotify:
-      "0no6AhEKdlfBy2TdFz4s9p",
+    spotify: "0no6AhEKdlfBy2TdFz4s9p",
+    deezer: "2789798548",
   },
 };

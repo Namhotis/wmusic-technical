@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <div className="flex row">
+      <div className="mainContainer">
         <MeteoDisplay appState={appState} setAppState={setAppState} />
         <div className="flex column rightPart">
           <UpdateMeteo appState={appState} setAppState={setAppState} />

@@ -10,7 +10,9 @@ export const getUserInfosServiceSpotify = (token) => {
 } 
 
 export const getUserInfosServiceDeezer = (token) => {
-  return fetch(`https://connect.deezer.com/oauth/access_token.php?app_id=${process.env.REACT_APP_DEEZER_ID}&secret=${process.env.REACT_APP_DEEZER_SECRET}&code=${token}&output=json`);
+  return fetch(
+    `https://cors-anywhere.herokuapp.com/https://connect.deezer.com/oauth/access_token.php?app_id=${process.env.REACT_APP_DEEZER_ID}&secret=${process.env.REACT_APP_DEEZER_SECRET}&code=${token}&output=json`
+  );
 }; 
 
 
@@ -47,17 +49,22 @@ export const likePlaylistOnSpotify = (playlistId, userToken) => {
 };
 
 
-export const likePlaylistOnDeezer = (playlistId, userToken) => {
+export const likePlaylistOnDeezer = (playlistId, userToken, userId) => {
   console.log("PlaylistId", playlistId, "UserToken", userToken);
-  // fetch(`user/{user_id}/playlists`, {
-  //   method: "POST",
-  //   headers: new Headers({
-  //     Authorization: `Bearer ${userToken}`,
-  //     "Content-Type": "application/json",
-  //     "Content-Length": "0",
-  //   }),
-  // })
-  //   .then((res) => res.json())
-  //   .then((res) => console.log(res))
-  //   .catch((err) => console.log(err));
+  fetch(
+    `https://api.deezer.com/user/${userId}/playlists?access_token=${userToken}`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        playlist_id: playlistId,
+      }),
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };

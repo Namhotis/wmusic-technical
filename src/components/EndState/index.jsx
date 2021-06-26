@@ -5,7 +5,7 @@ import {
   getUserInfosServiceDeezer,
   getHash,
   likePlaylistOnSpotify,
-  // likePlaylistOnDeezer,
+  likePlaylistOnDeezer,
 } from "../../tools/index.js";
 import SpotifyIFrame from "../SpotifyIFrame/index.jsx";
 import DeezerIFrame from '../DeezerIFrame'
@@ -58,30 +58,20 @@ const EndState = ({ appState, setAppState }) => {
     getUserInfosServiceDeezer(_DeezerToken)
       .then((res) => res.json())
       .then((res) => {
-        console.log("REEEES", res)
-        // likePlaylistOnDeezer(infos[appState.temps].spotify, res.access_token)
-        //   .then((_res) => _res.json())
-        //   .then((_res) => console.log(_res))
-        //   .catch((_err) => console.log(_err));
 
-        fetch(`https://api.deezer.com/user/me`, {
-          headers: new Headers({
-            Authorization: `Token ${res.access_token}`,
-          }),
-        })
-          .then((res) => res.json())
-          .then((res) => console.log("EEEEEEE", res))
-          .catch((err) => console.log(err));
+        fetch(
+          `https://cors-anywhere.herokuapp.com/https://api.deezer.com/user/me?access_token=${res.access_token}`
+        )
+          .then((_res) => _res.json())
+          .then((_res) => {
+            setUser(_res)
 
-        // .then((res) => res.json())
-        // .then((res) => {
-        // .catch((err) => console.log(err));
-
-        // setUser(res);
-        // setAppState({
-        //   ...appState,
-        //   user,
-        // });
+            likePlaylistOnDeezer(infos[appState.temps].spotify, res.access_token, _res.id)
+              .then((_res) => _res.json())
+              .then((_res) => console.log("DAB", _res))
+              .catch((_err) => console.log(_err));
+          })
+          .catch((_err) => console.log(_err));
       })
       .catch((err) => console.log(err));
   };
@@ -100,14 +90,14 @@ const EndState = ({ appState, setAppState }) => {
   if (user !== null) {
     return (
       <section className="endState">
-        <p>Merci {user.display_name}, la playlist a été ajoutée à votre bibliothèque.</p>
+        <p>Merci {user.display_name || user.name}, la playlist a été ajoutée à votre bibliothèque.</p>
         {
-          infos[appState?.temps]?.spotify && (
+          user.display_name && (
             <SpotifyIFrame playlistId={infos[appState.temps].spotify} />
           )
         }
         {
-          infos[appState?.temps]?.deezer && (
+          user.name && (
             <DeezerIFrame playlistId={infos[appState.temps].deezer} />
           )
         }
