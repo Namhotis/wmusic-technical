@@ -47,16 +47,9 @@ export const likePlaylistOnSpotify = (playlistId, userToken) => {
 
 export const likePlaylistOnDeezer = (playlistId, userToken, userId) => {
   fetch(
-    `https://cors-anywhere.herokuapp.com/https://api.deezer.com/user/${userId}/playlists?access_token=${userToken}`,
+    `https://cors-anywhere.herokuapp.com/https://api.deezer.com/user/${userId}/playlists?access_token=${userToken}&playlist_id=${playlistId}`,
     {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        playlist_id: playlistId,
-      }),
+      method: "POST"
     }
-  )
+  );
 };
