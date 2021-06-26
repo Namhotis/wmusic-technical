@@ -64,7 +64,7 @@ const EndState = ({ appState, setAppState }) => {
           .then((_res) => {
             setUser(_res)
 
-            likePlaylistOnDeezer(infos[appState.temps].spotify, res.access_token, _res.id)
+            likePlaylistOnDeezer(infos[appState.temps].deezer, res.access_token, _res.id)
               .then((_res) => _res.json())
               .then((_res) => console.log(_res))
               .catch((_err) => console.log(_err));
