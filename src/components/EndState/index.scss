@@ -2,6 +2,12 @@
   margin-top: 50px;
   margin-bottom: 50px;
 
+  @media screen and (max-width: 1024px) {
+    width: 80%;
+    max-width: 1024px;
+    margin: 50px auto;
+  }
+
   h2 {
     width: 100%;
     margin: auto;
