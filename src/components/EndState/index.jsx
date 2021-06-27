@@ -24,11 +24,6 @@ const EndState = ({ appState, setAppState }) => {
         ...appState,
         temps: infos[hash.state].slug,
       });
-    } else if (hash.code) {
-      setAppState({
-        ...appState,
-        temps: infos[hash.state].slug,
-      });
     }
 
     if (_SpotifyToken) {
@@ -56,7 +51,6 @@ const EndState = ({ appState, setAppState }) => {
     getUserInfosServiceDeezer(_DeezerToken)
       .then((res) => res.json())
       .then((res) => {
-
         fetch(
           `https://cors-anywhere.herokuapp.com/https://api.deezer.com/user/me?access_token=${res.access_token}`
         )

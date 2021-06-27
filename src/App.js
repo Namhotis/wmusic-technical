@@ -28,7 +28,6 @@ function App() {
         </div>
       </div>
       <EndState appState={appState} setAppState={setAppState} />
-      {/* PUSH THE PLAYLIST */}
     </div>
   );
 }
